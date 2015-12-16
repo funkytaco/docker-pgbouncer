@@ -1,7 +1,4 @@
-FROM ubuntu
-MAINTAINER Matt Bentley <mbentley@mbentley.net> and Gaurang Vyas <gdvyas@gmail.com>
-RUN (echo "deb http://archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse" > /etc/apt/sources.list && echo "deb http://archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list && echo "deb http://archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list && echo "deb http://archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list)
-RUN apt-get update
+FROM ubuntu:14.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget
 RUN wget --quiet --no-check-certificate -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
