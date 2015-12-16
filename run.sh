@@ -17,21 +17,16 @@ cat << EOF > /etc/pgbouncer/pgbconf.ini
 * = host=${PG_PORT_5432_TCP_ADDR} port=${PG_PORT_5432_TCP_PORT}
 
 [pgbouncer]
-logfile = /var/log/postgresql/pgbouncer.log
-pidfile = /var/run/postgresql/pgbouncer.pid
-;listen_addr = *
 listen_addr = 0.0.0.0
 listen_port = 6432
-unix_socket_dir = /var/run/postgresql
-;auth_type = any
+unix_socket_dir = 
 auth_type = trust
 auth_file = /etc/pgbouncer/userlist.txt
-pool_mode = session
-server_reset_query = DISCARD ALL
+pool_mode = transaction
+server_reset_query =
 max_client_conn = ${PG_ENV_POSTGRESQL_MAX_CLIENT_CONN}
 default_pool_size = ${PG_ENV_POSTGRESQL_DEFAULT_POOL_SIZE}
 ignore_startup_parameters = extra_float_digits
-server_idle_timeout = ${PG_ENV_POSTGRESQL_SERVER_IDLE_TIMEOUT}
 EOF
 fi
 
